@@ -1,6 +1,6 @@
 ﻿//MovieTheater
 //Kodexempel - Form applikation
-//Skapad:  Tim Wahlström Mars 7 2013
+//Skapad:  Tim Wahlström Mars 27 2013
 using System;
 using System.Collections.Generic;
 using System.Linq;

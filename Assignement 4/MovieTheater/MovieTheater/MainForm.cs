@@ -1,6 +1,6 @@
 ﻿//MovieTheater
 //Kodexempel - Form applikation
-//Skapad:  Tim Wahlström Mars 7 2013
+//Skapad:  Tim Wahlström Mars 27 2013
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -14,13 +14,16 @@ namespace MovieTheater
 {
     public partial class MainForm : Form
     {
-        private const int totalNumOfSeats = 20 * 30; //Testvariablar för att testa
+        private const int totalNumOfSeats = 60; //Testvariablar för att testa
         private int numOfReservedSeats = 0; //Över när reservation görs
+
+        private SeatManager m_seatMngr;
 
         public MainForm()
         {
             InitializeComponent(); //Ett måste av
 
+            m_seatMngr = new SeatManager(totalNumOfSeats); //Hämtar antal platser lägger in i seatmanager
             InitializeGUI(); //Anropar all input/output kontroll
         }
 
@@ -34,6 +37,10 @@ namespace MovieTheater
         }
 
         private void OK_Click(object sender, EventArgs e)//Ok knappen
+        {
+            ReserveOrCancelSeat();
+        }
+        private void ReserveOrCancelSeat()
         {
             string cutmName = string.Empty;
             double seatPrice = 0.0;
@@ -50,10 +57,15 @@ namespace MovieTheater
                 {
                     numOfReservedSeats--;
                 }
-                UpdateGUI(cutmName, seatPrice);
+               UpdateGUI(cutmName, seatPrice);
+                
             }
         }
-
+        /// <summary>
+        /// Har hand om all ionfo om platserna
+        /// </summary>
+        /// <param name="cutmName"></param>
+        /// <param name="price"></param>
         private void UpdateGUI(string cutmName, double price)
         {
             string strOut = string.Empty;
@@ -131,6 +143,14 @@ namespace MovieTheater
             //Tar bort möjligheten att skriva i textboxarna för namn och pris
             NamnTextBox.Enabled = false;
             PrisTextBox.Enabled = false;
+        }
+        /// <summary>
+        /// Kollar så att listboxen stämmer, vad som är markerat osv
+        /// </summary>
+        /// <returns></returns>
+        private bool CheckSelectedIndex()
+        {
+
         }
     }
 }
