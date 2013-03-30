@@ -125,7 +125,7 @@ namespace MovieTheater
         /// <returns></returns>
         public string GetSeatInfoAt(int index)
         {
-            string strOut = string.Format("{0,5}{1,-8}{2,-18}{3, 10:f2}", " - ","" , m_nameList[index], m_priceList[index]);
+            string strOut = string.Format("{0,5}{1,-8}{2,-18}{3, 10:f2}", index ,"Ledig?!", m_nameList[index], m_priceList[index]);
             return strOut;
         }
         /// <summary>

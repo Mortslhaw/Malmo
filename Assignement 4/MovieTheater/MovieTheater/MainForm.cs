@@ -30,10 +30,11 @@ namespace MovieTheater
         private void InitializeGUI() //Anropar kontroller
         {
             ReserveraRadioButton.Checked = true; //Sätt som Defult
-            ReservationsListBox.Items.Clear(); //Tömmer Listboxen
             NamnTextBox.Text = string.Empty; //Tömmer Textboxen
             PrisTextBox.Text = string.Empty; //Tömmer Textboxen
             LabelTotaltAntalPlatser.Text = totalNumOfSeats.ToString();//Skriver ut antal platser i salen
+
+            UpdateGUI();
         }
 
         private void OK_Click(object sender, EventArgs e)//Ok knappen
@@ -70,32 +71,15 @@ namespace MovieTheater
                         numOfReservedSeats--;//Tar bort en reservation
                     }
                 }
+                UpdateGUI();
             }
-            /* string cutmName = string.Empty;
-             double seatPrice = 0.0;
-
-             bool inputOK = ReadAndValidateInput(out cutmName, out seatPrice);
-
-             if (inputOK)
-             {
-                 if (ReserveraRadioButton.Checked)
-                 {
-                     numOfReservedSeats++;
-                 }
-                 else
-                 {
-                     numOfReservedSeats--;
-                 }
-                UpdateGUI(cutmName, seatPrice);
-                
-             }*/
         }
         /// <summary>
         /// Har hand om all ionfo om platserna
         /// </summary>
         /// <param name="cutmName"></param>
         /// <param name="price"></param>
-        private void UpdateGUI(string cutmName, double price)
+        private void UpdateGUI()
         {
             ReservationsListBox.Items.Clear();//Rensar så att det inte ligger ngt skit kvar
 
