@@ -16,6 +16,8 @@ namespace MovieTheater
         private string[] m_nameList = null;
         //Array som lagrar platsernas pris
         private double[] m_priceList = null;
+        //Array för reserverade platser
+        private string[] m_reservedList = null;
         /// <summary>
         /// Konstruktor lägg in allt här typ 
         /// </summary>
@@ -25,6 +27,12 @@ namespace MovieTheater
             m_totNumOfSeats = maxNumerOfSeats;
             m_nameList = new string [m_totNumOfSeats];
             m_priceList = new double [m_totNumOfSeats];
+            m_reservedList = new string[m_totNumOfSeats];
+
+            for (int i = 0; i < m_reservedList.Length; i++)
+            {
+                m_reservedList[i] = "ledig";
+            }
         }
         /// <summary>
         /// Kollar så att index är innom räckhåll för arrayen
@@ -93,6 +101,7 @@ namespace MovieTheater
             {
                 m_nameList[index] = name; //Får namnet ifrån index i mainform
                 m_priceList[index] = price;//Får priset ifrån mainform
+                m_reservedList[index] = "reserverad";
                 return true;
             }
             else
@@ -111,6 +120,7 @@ namespace MovieTheater
             {
                 m_nameList[index] = null;//Tömmer namnraden
                 m_priceList[index] = 0.0;//Sätter priset till o,o
+                m_reservedList[index] = "ledig";
                 return true;
             }
             else
@@ -125,7 +135,7 @@ namespace MovieTheater
         /// <returns></returns>
         public string GetSeatInfoAt(int index)
         {
-            string strOut = string.Format("{0,5}{1,-8}{2,-18}{3, 10:f2}", index ,"Ledig?!", m_nameList[index], m_priceList[index]);
+            string strOut = string.Format("{0,3}{1,15}{2,10}{3, 60:f2}", index ,m_reservedList[index], m_nameList[index], m_priceList[index]);
             return strOut;
         }
         /// <summary>
