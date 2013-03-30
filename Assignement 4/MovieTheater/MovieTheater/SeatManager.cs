@@ -88,22 +88,55 @@ namespace MovieTheater
         /// <param name="index"></param>
         /// <returns></returns>
         public bool ReserveSeat(string name, double price, int index)
-        {
-
+        {//Ser till så att platsen är ledig
+            if (string.IsNullOrEmpty(m_nameList[index]))
+            {
+                m_nameList[index] = name; //Får namnet ifrån index i mainform
+                m_priceList[index] = price;//Får priset ifrån mainform
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
+        /// <summary>
+        /// Kollar upp så att det går att avsluta en reservation
+        /// </summary>
+        /// <param name="index"></param>
+        /// <returns></returns>
         public bool CancelSeat(int index)
-        {
-
+        {   //Ser så att det är inte är tomt
+            if (!string.IsNullOrEmpty(m_nameList[index]))
+            {
+                m_nameList[index] = null;//Tömmer namnraden
+                m_priceList[index] = 0.0;//Sätter priset till o,o
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
+        /// <summary>
+        /// Formaterar och har info om alla platserna i listboxen
+        /// </summary>
+        /// <param name="index"></param>
+        /// <returns></returns>
         public string GetSeatInfoAt(int index)
         {
-
+            string strOut = string.Format("{0,5}{1,-8}{2,-18}{3, 10:f2}", " - ","" , m_nameList[index], m_priceList[index]);
+            return strOut;
         }
+        /// <summary>
+        /// Metoden skickar en array med alla platser bion har.
+        /// </summary>
+        /// <returns></returns>
         public string[] GetInfoStrings()
         {
             int count = GetNumOfSeats();
 
-            if ((count <= 0))
+            if (count <= 0)
                 return null;
 
             string[] srtSeatInfoStrings = new string[count];

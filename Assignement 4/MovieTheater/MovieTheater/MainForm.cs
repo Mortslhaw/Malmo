@@ -42,24 +42,53 @@ namespace MovieTheater
         }
         private void ReserveOrCancelSeat()
         {
-            string cutmName = string.Empty;
-            double seatPrice = 0.0;
-
-            bool inputOK = ReadAndValidateInput(out cutmName, out seatPrice);
-
-            if (inputOK)
+            if (CheckSelectedIndex() == true)
             {
+                string name = string.Empty;
+                double seatPrice = 0.0;
+                int selectedSeat = ReservationsListBox.SelectedIndex;
                 if (ReserveraRadioButton.Checked)
                 {
-                    numOfReservedSeats++;
+                    DialogResult question = MessageBox.Show("Är du verkligen säker?", "Bekräftat", MessageBoxButtons.YesNo);
+
+                    if (question == DialogResult.Yes)//Klickat på ja
+                    {
+                        if (ReadAndValidateInput(out name, out seatPrice) == true)
+                        {
+                            m_seatMngr.ReserveSeat(name, seatPrice, selectedSeat);
+                            numOfReservedSeats++;//Lägger till en reservation
+                        }
+                    }
                 }
                 else
                 {
-                    numOfReservedSeats--;
+                    DialogResult question = MessageBox.Show("Är du verkligen säker?", "Bekräftat", MessageBoxButtons.YesNo);
+
+                    if (question == DialogResult.Yes)//Klickat på ja
+                    {
+                        m_seatMngr.CancelSeat(selectedSeat);
+                        numOfReservedSeats--;//Tar bort en reservation
+                    }
                 }
-               UpdateGUI(cutmName, seatPrice);
-                
             }
+            /* string cutmName = string.Empty;
+             double seatPrice = 0.0;
+
+             bool inputOK = ReadAndValidateInput(out cutmName, out seatPrice);
+
+             if (inputOK)
+             {
+                 if (ReserveraRadioButton.Checked)
+                 {
+                     numOfReservedSeats++;
+                 }
+                 else
+                 {
+                     numOfReservedSeats--;
+                 }
+                UpdateGUI(cutmName, seatPrice);
+                
+             }*/
         }
         /// <summary>
         /// Har hand om all ionfo om platserna
@@ -68,17 +97,13 @@ namespace MovieTheater
         /// <param name="price"></param>
         private void UpdateGUI(string cutmName, double price)
         {
-            string strOut = string.Empty;
-            string strResed = "Ledig ";
+            ReservationsListBox.Items.Clear();//Rensar så att det inte ligger ngt skit kvar
 
-            if (ReserveraRadioButton.Checked)//Om plats är reserverad
-                strResed = "Reserverad ";
-            //Formaterar strängen så den passar listboxen
-            strOut = string.Format("{0,5}{1,-8}{2,-18}{3, 10:f2}"," - ", strResed, cutmName, price);
-            ReservationsListBox.Items.Add(strOut);
+            ReservationsListBox.Items.AddRange(m_seatMngr.GetInfoStrings()); //Lägger till alla rader ifrån arrayen till listboxen
 
-            LabelAntalTommaPlatser.Text = (totalNumOfSeats - numOfReservedSeats).ToString();
-            LabelAntalReserverade.Text = numOfReservedSeats.ToString();
+            //Alla lediga samt tomma platser skrivs ut
+            LabelAntalTommaPlatser.Text = m_seatMngr.GetNumVacant().ToString();
+            LabelAntalReserverade.Text = m_seatMngr.GetNumReserved().ToString();
         }
         private bool ReadAndValidateInput(out string name, out double price)
         {
@@ -150,7 +175,15 @@ namespace MovieTheater
         /// <returns></returns>
         private bool CheckSelectedIndex()
         {
-
+            if (ReservationsListBox.SelectedIndex != -1)
+            {
+                return true;
+            }
+            else
+            {
+                MessageBox.Show("Har du valt en plats i listan?!?");
+                return false;
+            }
         }
-    }
+	}
 }
