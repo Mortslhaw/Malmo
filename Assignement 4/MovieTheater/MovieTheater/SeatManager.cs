@@ -26,28 +26,69 @@ namespace MovieTheater
             m_nameList = new string [m_totNumOfSeats];
             m_priceList = new double [m_totNumOfSeats];
         }
+        /// <summary>
+        /// Kollar så att index är innom räckhåll för arrayen
+        /// </summary>
+        /// <param name="index"></param>
+        /// <returns></returns>
         private bool CheckIndex(int index)
         {
-            if (index >= 0 && index < m_totNumOfSeats)
+            if (index >= 0 && index < m_nameList.Length)
                 return true;
             else
                 return false;
         }
+        /// <summary>
+        /// Antalet reserverade platser
+        /// </summary>
+        /// <returns></returns>
         public int GetNumReserved()
         {
+            int NumbOfReservedSeats = 0;//VAriabel lokalt
+            for (int i = 0; i < m_nameList.Length; i++)//Kollar igenom hela arrayen 
+            {
 
+                if (!String.IsNullOrEmpty(m_nameList[i]))//Är arrayen skilt ifrån empty eller null
+                {
+                    NumbOfReservedSeats++;
+                }
+            }
+            return NumbOfReservedSeats;//Retunerar alla reserverade platser
         }
+        /// <summary>
+        /// Kollar upp antalet lediga platser
+        /// </summary>
+        /// <returns></returns>
         public int GetNumVacant()
         {
+            int NumbOfVacantSeats = 0;
 
+            for (int i = 0; i < m_nameList.Length; i++)
+            {
+                if (string.IsNullOrEmpty(m_nameList[i]))
+                {
+                    NumbOfVacantSeats++;
+                }
+            }
+            return NumbOfVacantSeats;
         }
+        /// <summary>
+        /// Hämtar antalet platser
+        /// </summary>
+        /// <returns></returns>
         public int GetNumOfSeats()
         {
             return m_totNumOfSeats;
         }
+        /// <summary>
+        /// Ska retunera true eller false om reservation går igenom eller ej
+        /// </summary>
+        /// <param name="name"></param>
+        /// <param name="price"></param>
+        /// <param name="index"></param>
+        /// <returns></returns>
         public bool ReserveSeat(string name, double price, int index)
         {
-
 
         }
         public bool CancelSeat(int index)
