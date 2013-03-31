@@ -87,7 +87,7 @@
             this.groupBox1.Controls.Add(this.label9);
             this.groupBox1.Location = new System.Drawing.Point(310, 25);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(366, 325);
+            this.groupBox1.Size = new System.Drawing.Size(375, 325);
             this.groupBox1.TabIndex = 17;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "groupBox1";
@@ -95,7 +95,7 @@
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(280, 34);
+            this.label12.Location = new System.Drawing.Point(294, 36);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(24, 13);
             this.label12.TabIndex = 29;
@@ -103,16 +103,17 @@
             // 
             // ReservationsListBox
             // 
+            this.ReservationsListBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ReservationsListBox.FormattingEnabled = true;
-            this.ReservationsListBox.Location = new System.Drawing.Point(18, 63);
+            this.ReservationsListBox.Location = new System.Drawing.Point(18, 61);
             this.ReservationsListBox.Name = "ReservationsListBox";
-            this.ReservationsListBox.Size = new System.Drawing.Size(328, 251);
-            this.ReservationsListBox.TabIndex = 28;
+            this.ReservationsListBox.Size = new System.Drawing.Size(327, 251);
+            this.ReservationsListBox.TabIndex = 8;
             // 
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(69, 34);
+            this.label8.Location = new System.Drawing.Point(76, 34);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(37, 13);
             this.label8.TabIndex = 26;
@@ -140,7 +141,7 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(132, 33);
+            this.label9.Location = new System.Drawing.Point(175, 33);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(35, 13);
             this.label9.TabIndex = 27;
@@ -307,7 +308,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(720, 362);
+            this.ClientSize = new System.Drawing.Size(703, 364);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
@@ -330,7 +331,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.ListBox ReservationsListBox;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label7;
@@ -350,6 +350,7 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.ListBox ReservationsListBox;
     }
 }
 

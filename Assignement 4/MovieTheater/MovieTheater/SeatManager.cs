@@ -31,7 +31,7 @@ namespace MovieTheater
 
             for (int i = 0; i < m_reservedList.Length; i++)
             {
-                m_reservedList[i] = "ledig";
+                m_reservedList[i] = "Ledig";
             }
         }
         /// <summary>
@@ -101,7 +101,7 @@ namespace MovieTheater
             {
                 m_nameList[index] = name; //Får namnet ifrån index i mainform
                 m_priceList[index] = price;//Får priset ifrån mainform
-                m_reservedList[index] = "reserverad";
+                m_reservedList[index] = "Reserverad";
                 return true;
             }
             else
@@ -120,7 +120,7 @@ namespace MovieTheater
             {
                 m_nameList[index] = null;//Tömmer namnraden
                 m_priceList[index] = 0.0;//Sätter priset till o,o
-                m_reservedList[index] = "ledig";
+                m_reservedList[index] = "Ledig";
                 return true;
             }
             else
@@ -135,7 +135,7 @@ namespace MovieTheater
         /// <returns></returns>
         public string GetSeatInfoAt(int index)
         {
-            string strOut = string.Format("{0,3}{1,15}{2,10}{3, 60:f2}", index ,m_reservedList[index], m_nameList[index], m_priceList[index]);
+            string strOut = string.Format("{0,5} {1,20} {2, 25} {3, 25:f2}", index +1 ,m_reservedList[index], m_nameList[index], m_priceList[index]);
             return strOut;
         }
         /// <summary>
