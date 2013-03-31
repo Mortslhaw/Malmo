@@ -18,7 +18,6 @@ namespace MovieTheater
         //private int numOfReservedSeats = 0; //Över när reservation görs
 
         private SeatManager m_seatMngr;
-
         public MainForm()
         {
             InitializeComponent(); //Ett måste av
@@ -26,7 +25,6 @@ namespace MovieTheater
             m_seatMngr = new SeatManager(totalNumOfSeats); //Hämtar antal platser lägger in i seatmanager
             InitializeGUI(); //Anropar all input/output kontroll
         }
-
         private void InitializeGUI() //Anropar kontroller
         {
             ReserveraRadioButton.Checked = true; //Sätt som Defult
@@ -36,7 +34,6 @@ namespace MovieTheater
 
             UpdateGUI();
         }
-
         private void OK_Click(object sender, EventArgs e)//Ok knappen
         {
             ReserveOrCancelSeat();
@@ -53,7 +50,7 @@ namespace MovieTheater
                 int selectedSeat = ReservationsListBox.SelectedIndex;
                 bool checkResrvSeat = false;
                 bool checkCancSeat = false;
-                bool oveerWriteSeat = false;
+                //bool oveerWriteSeat = false;
                 if (ReserveraRadioButton.Checked)
                 {
                     DialogResult question = MessageBox.Show("Är du verkligen säker?", "Bekräftat", MessageBoxButtons.YesNo);
@@ -68,8 +65,8 @@ namespace MovieTheater
                             {
                                 MessageBox.Show("Reseverat");
                                 UpdateGUI();
-                            }
-                            //else
+                            }                            
+                                //else
                             //{
 
                             //    DialogResult overWrite = MessageBox.Show("Plats redan bokad vill du göra en ombokning på denna?", "Säker?", MessageBoxButtons.YesNo);
@@ -143,7 +140,6 @@ namespace MovieTheater
 
             return nameOK && priceOK; //True om båda är True annars blir det False
         }
-
         private bool ReadValidatePrice(out double price)
         {
             double.TryParse(PrisTextBox.Text, out price);
@@ -160,7 +156,6 @@ namespace MovieTheater
             else
                 return true;
         }
-
         private bool ReadValidateName(out string name)
         {
             name = NamnTextBox.Text;
@@ -185,7 +180,6 @@ namespace MovieTheater
             NamnTextBox.Enabled = true;
             PrisTextBox.Enabled = true;
         }
-
         private void AvslutaReservationRadioButton_CheckedChanged(object sender, EventArgs e)
         {
             //Tar bort möjligheten att skriva i textboxarna för namn och pris
