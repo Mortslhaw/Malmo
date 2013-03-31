@@ -15,7 +15,7 @@ namespace MovieTheater
     public partial class MainForm : Form
     {
         private const int totalNumOfSeats = 60; //Testvariablar för att testa
-        private int numOfReservedSeats = 0; //Över när reservation görs
+        //private int numOfReservedSeats = 0; //Över när reservation görs
 
         private SeatManager m_seatMngr;
 
@@ -42,9 +42,9 @@ namespace MovieTheater
             ReserveOrCancelSeat();
         }
         /// <summary>
-        /// För att både reservera och makulera, hade nog blivit finare med en uppdelning av metoder och kört på en metod för reservera och en för makulera..
+        /// För att både reservera och makulera, hade nog blivit finare med en uppdelning av metoder och kört på en för makulering och en för reservation
         /// </summary>
-        private void ReserveOrCancelSeat() 
+        private void ReserveOrCancelSeat()
         {
             if (CheckSelectedIndex() == true)
             {
@@ -53,25 +53,41 @@ namespace MovieTheater
                 int selectedSeat = ReservationsListBox.SelectedIndex;
                 bool checkResrvSeat = false;
                 bool checkCancSeat = false;
+                bool oveerWriteSeat = false;
                 if (ReserveraRadioButton.Checked)
                 {
                     DialogResult question = MessageBox.Show("Är du verkligen säker?", "Bekräftat", MessageBoxButtons.YesNo);
 
                     if (question == DialogResult.Yes)//Klickat på ja
                     {
-                        
+
                         if (ReadAndValidateInput(out name, out seatPrice) == true && true)
                         {
-                           checkResrvSeat = m_seatMngr.ReserveSeat(name, seatPrice, selectedSeat);
-                           if (checkResrvSeat == true)
-                           {
-                               MessageBox.Show("Reseverat");
-                               UpdateGUI();
-                           }
-                           else
-                           {
-                               MessageBox.Show("Redan reserverad plats du får makulera reservationen för att kunna reservera");
-                           }
+                            checkResrvSeat = m_seatMngr.ReserveSeat(name, seatPrice, selectedSeat);
+                            if (checkResrvSeat == true)
+                            {
+                                MessageBox.Show("Reseverat");
+                                UpdateGUI();
+                            }
+                            //else
+                            //{
+
+                            //    DialogResult overWrite = MessageBox.Show("Plats redan bokad vill du göra en ombokning på denna?", "Säker?", MessageBoxButtons.YesNo);
+                            //    if (overWrite == DialogResult.Yes)
+                            //    {
+                            //        oveerWriteSeat = m_seatMngr.ReserveSeat(name, seatPrice, selectedSeat);
+                            //        if (oveerWriteSeat == true)
+                            //        {
+                            //            MessageBox.Show("Ombokat");
+                            //            UpdateGUI();
+                            //        }
+
+                            //    }
+                            //}
+                            else
+                            {
+                                MessageBox.Show("Redan reserverad plats du får makulera reservationen för att kunna reservera");
+                            }
                         }
 
                     }
@@ -82,16 +98,16 @@ namespace MovieTheater
 
                     if (question == DialogResult.Yes)//Klickat på ja
                     {
-                       checkCancSeat = m_seatMngr.CancelSeat(selectedSeat);
-                       if (checkCancSeat == true)
-                       {
-                           MessageBox.Show("Makulerat!");
-                           UpdateGUI();
-                       }
-                       else
-                       {
-                           MessageBox.Show("Platsen är redan ledig går bra att boka den");
-                       }
+                        checkCancSeat = m_seatMngr.CancelSeat(selectedSeat);
+                        if (checkCancSeat == true)
+                        {
+                            MessageBox.Show("Makulerat!");
+                            UpdateGUI();
+                        }
+                        else
+                        {
+                            MessageBox.Show("Platsen är redan ledig går bra att boka den");
+                        }
                     }
                 }
                 UpdateGUI();
@@ -192,5 +208,5 @@ namespace MovieTheater
                 return false;
             }
         }
-	}
+    }
 }

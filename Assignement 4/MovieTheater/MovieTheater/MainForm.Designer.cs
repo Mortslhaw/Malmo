@@ -103,11 +103,12 @@
             // 
             // ReservationsListBox
             // 
-            this.ReservationsListBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ReservationsListBox.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ReservationsListBox.FormattingEnabled = true;
+            this.ReservationsListBox.ItemHeight = 14;
             this.ReservationsListBox.Location = new System.Drawing.Point(18, 61);
             this.ReservationsListBox.Name = "ReservationsListBox";
-            this.ReservationsListBox.Size = new System.Drawing.Size(327, 251);
+            this.ReservationsListBox.Size = new System.Drawing.Size(327, 242);
             this.ReservationsListBox.TabIndex = 8;
             // 
             // label8
