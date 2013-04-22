@@ -56,6 +56,32 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="Adress.cs" />
+    <Compile Include="C:\Users\wati1101\Desktop\Malmo\Assignement5\Assignement5\Contact.cs">
+      <Link>Contact.cs</Link>
+    </Compile>
+    <Compile Include="C:\Users\wati1101\Desktop\Malmo\Assignement5\Assignement5\ContactManager.cs">
+      <Link>ContactManager.cs</Link>
+    </Compile>
+    <Compile Include="C:\Users\wati1101\Desktop\Malmo\Assignement5\Assignement5\Form1.cs">
+      <SubType>Form</SubType>
+      <Link>Form1.cs</Link>
+    </Compile>
+    <Compile Include="C:\Users\wati1101\Desktop\Malmo\Assignement5\Assignement5\Form1.Designer.cs">
+      <DependentUpon>Form1.cs</DependentUpon>
+      <Link>Form1.Designer.cs</Link>
+    </Compile>
+    <Compile Include="C:\Users\wati1101\Desktop\Malmo\Assignement5\Assignement5\MainForm.cs">
+      <Link>MainForm.cs</Link>
+    </Compile>
+    <Compile Include="C:\Users\wati1101\Desktop\Malmo\Assignement5\Assignement5\Countries.cs">
+      <Link>Countries.cs</Link>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="C:\Users\wati1101\Desktop\Malmo\Assignement5\Assignement5\Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
+      <Link>Form1.resx</Link>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
